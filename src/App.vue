@@ -8,18 +8,6 @@
     filtro: 'todas',
     tarefaTemp: '',
     tarefas: [
-      {
-        titulo: 'Estudar ES6',
-        finalizada: false,
-      },
-      {
-        titulo: 'Estudar SASS',
-        finalizada: false,
-      },
-      {
-        titulo: 'Ir para a academia',
-        finalizada: true,
-      },
     ]
   })
 
@@ -57,13 +45,9 @@
 <template>
   <div class="container">
     <Cabecalho :tarefasPendentes="getTarefasPendentes().length" />
-    <Formulario />
-    <ListaDeTarefas />
+    <Formulario :trocar-filtro="evento => estado.filtro = evento.target.value" :tarefa-temp="estado.tarefaTemp" :edita-tarefa-Temp="evento => estado.tarefaTemp = evento.target.value" :cadastraTarefa="cadastraTarefa" />
+    <ListaDeTarefas :tarefas="getTarefasFiltradas()" />
   </div>
 </template>
 
-<style scoped>
-  .done {
-    text-decoration: line-through
-  }
-</style>
+
